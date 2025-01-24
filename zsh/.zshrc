@@ -74,36 +74,6 @@ mkcd () {
     mkdir $1 && cd $1
 }
 
-# Extact a file or files depending on their file suffix
-# extract <files...>
-extract () {
-    if [ -z "$1" ]; then
-        # display usage if no parameters given
-        echo "Usage: extract <path/file_name>.<zip|rar|bz2|gz|tar|tbz2|tgz|Z|7z|xz|ex|tar.bz2|tar.gz|tar.xz>"
-        echo "       extract <path/file_name_1.ext> [path/file_name_2.ext] [path/file_name_3.ext]"
-        return 1
-    else
-        for n in $@; do
-            if [ -f "$n" ] ; then
-                case "${n%,}" in
-                    *.tar.bz2|*.tar.gz|*.tar.xz|*.tbz2|*.tgz|*.txz|*.tar)
-                        tar xvf "$n"       
-                    ;;
-                    *.gz)  gunzip ./"$n" ;;
-                    *.zip) unzip ./"$n" ;;
-                    *)
-                        echo "extract: '$n' - unknown archive method"
-                        return 1
-                    ;;
-                esac
-            else
-                echo "'$n' - file does not exist"
-                return 1
-            fi
-        done
-    fi
-}
-
 # Sync local files with server files
 fsa () {
     # Requires server and client to be setup with unison (https://github.com/bcpierce00/unison)
@@ -117,38 +87,10 @@ fs () {
     unison -auto ~/sync ssh://server/sync
 }
 
-# b/c I'm dumb and will forget
-my-ip () {
-    printf "Use \`ips\`\n"
-    return 1
-}
-
-# View information about my IPs
-ips () {
-    printf "Internal IP: %s\n" $(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1')
-    printf "External IP: %s\n" $(curl -s http://ifconfig.io)
-}
-
 # Run a task in the bg
 # bg <command>
 bg () {
     setsid $@ &> /dev/null &
-}
-
-# Clone one of my personal repos
-# gcme <repo>
-gcme () {
-    git clone git@github.com:funnyboy-roks/$1.git $2
-}
-
-# Clone a git repo and cd into the dir that it makes
-gcd () {
-    git clone $1 $2
-    if ! [ -z $2 ] ; then # if $2 is specified, that's the dir in which the repo was cloned
-        cd $2
-    else
-        cd "${"$(basename $1)"%.*}" # otherwise, get it from the name
-    fi
 }
 
 # Takes an optional time and then copies the discord format
@@ -189,7 +131,7 @@ swap () {
 }
 
 setopt clobber # Allow things like echo 'a' > b.txt if b.txt exists.
-setopt globdots # Tab complete "hidden" files (hate that term)
+setopt globdots # Tab complete "hidden" files (hate that idea)
 
 tabs -4 # set tabwidth = 4
 
@@ -222,6 +164,8 @@ alias python="python3"
 alias tree="eza -ThaF --icons --git -I 'target|node_modules|venv|.git'"
 alias :q="exit" # I can't help the vi
 alias serve="basic-http-server" # https://github.com/brson/basic-http-server
+alias feh='feh -B "#222" --force-aliasing --keep-zoom-vp -z'
+alias find='noglob find'
 
 # Most servers don't have alacritty term info
 # This is less useful since I'm using tmux now
@@ -239,7 +183,5 @@ alias gl='git log'
 alias gp='git pull'
 alias gpsh='git push'
 alias gss='git status -s'
-alias feh='feh -B "#222" --force-aliasing --keep-zoom-vp -z'
-alias find='noglob find'
 
 eval "$(atuin init zsh --disable-up-arrow)"
