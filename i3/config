@@ -28,8 +28,8 @@ bindsym $mod+Return exec ~/.config/i3/alacritty-cwd.sh
 # Kill focused window
 bindsym $mod+Shift+q kill
 
-# Open ulauncher
-bindsym $mod+d exec ulauncher-toggle
+# Open dlauncher
+bindsym $mod+d exec dlauncher-toggle
 
 # Toggle polybar
 bindsym $mod+b exec ~/.config/i3/polybar/launch.sh toggle
@@ -290,7 +290,7 @@ exec discord
 exec autokey-qt
 exec spotify
 exec picom
-exec ulauncher --hide-window
+exec dlauncher
 exec flameshot
 exec thunderbird
 exec_always protonvpn-app
