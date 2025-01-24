@@ -159,7 +159,7 @@ let g:latex_fold_sections = []
 
 " Open hotkeys
 map <C-p> :Files<CR>
-" map <C-p> :Vifm<CR>
+map <M-p> :Vifm<CR>
 nmap <leader>; :Buffers<CR>
 
 " Quick-save
@@ -321,7 +321,7 @@ noremap <leader>y "+y
 noremap <leader>Y :%y+<cr>
 
 " <leader>s for Rg search
-noremap <leader>s :Rg
+noremap <leader>s :Rg<space>
 let g:fzf_layout = { 'down': '~20%' }
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
