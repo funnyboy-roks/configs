@@ -133,7 +133,7 @@ lspconfig.clangd.setup {
     on_attach = on_attach('C'),
 }
 
-lspconfig.typst_lsp.setup {
+lspconfig.tinymist.setup {
     on_attach = on_attach(),
 }
 
@@ -166,8 +166,8 @@ lspconfig.lua_ls.setup {
     }
 }
 
-lspconfig.java_language_server.setup {
-    cmd = { '/home/funnyboy_roks/dev/lsp/java-language-server/dist/lang_server_linux.sh' }
+lspconfig.jdtls.setup {
+    on_attach = on_attach(),
 }
 
 lspconfig.nim_langserver.setup{
