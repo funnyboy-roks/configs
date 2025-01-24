@@ -195,6 +195,7 @@ set updatetime=300
 " =============================================================================
 filetype plugin indent on
 set autoindent
+set cinoptions+=l1 " Fix C switch indent: https://vi.stackexchange.com/questions/5218/auto-indent-the-key-of-c-switch-block/5221#5221
 set timeoutlen=300 " http://stackoverflow.com/questions/2158516/delay-before-o-opens-a-new-line
 set encoding=utf-8
 set scrolloff=2
