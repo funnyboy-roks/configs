@@ -139,12 +139,6 @@ bg () {
 # gcme <repo>
 gcme () {
     git clone git@github.com:funnyboy-roks/$1.git $2
-
-    if ! [ -z $2 ] ; then
-        cd $2
-    else
-        cd $1
-    fi
 }
 
 # Clone a git repo and cd into the dir that it makes
