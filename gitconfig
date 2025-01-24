@@ -13,3 +13,5 @@
     insteadOf = gh
 [submodule]
     recurse = true
+[advice]
+	addEmptyPathspec = false
