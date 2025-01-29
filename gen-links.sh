@@ -32,6 +32,8 @@ mkln ".cargo/config.toml"   "$HOME/.cargo/config.toml"
 mkln "i3/betterlockscreen"  "$HOME/.config/betterlockscreen/betterlockscreenrc"
 mkln "scripts"              "$HOME/scripts"
 mkln "dlauncher"            "$HOME/.config/dlauncher"
+mkln ".tmux.conf"           "$HOME/.tmux.conf"
+mkln "tmux"                 "$HOME/.config/tmux"
 
 # These need sudo to run, but there here for documentation
 mkln "lemurs/config.toml"   "/etc/lemurs/config.toml"
