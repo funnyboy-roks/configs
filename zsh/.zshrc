@@ -136,7 +136,7 @@ setopt globdots # Tab complete "hidden" files (hate that idea)
 tabs -4 # set tabwidth = 4
 
 JAVA_HOME="/usr/lib/jvm/default"
-PATH="$PATH:$HOME/.cargo/bin:$HOME/scripts:$HOME/.local/bin"
+PATH="$PATH:$HOME/.cargo/bin:$HOME/scripts:$HOME/.local/bin:$HOME/go/bin"
 
 # Start tmux if we're in guake
 # arguably, we could do `-ne 'tmux: server'`, but I think that may be too generic
