@@ -92,6 +92,9 @@ lspconfig.rust_analyzer.setup {
     },
     settings = {
         ['rust-analyzer'] = {
+            checkOnSave = {
+                command = 'clippy',
+            },
             cargo = {
                 allFeatures = true,
             },
