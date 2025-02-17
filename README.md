@@ -1,9 +1,9 @@
 # Configs
 
-# Cloning
-
-This repo uses some submodules for base16 styles, so be sure to use
-`--recurse-submodules` when cloning.
+> [!IMPORTANT]
+>
+> This repo uses some submodules for base16 styles, so be sure to use
+> `--recurse-submodules` when cloning.
 
 ## Setup
 
