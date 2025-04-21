@@ -58,6 +58,11 @@
 	#navigator-toolbox .panel-viewstack { max-height: 75vh !important; }
 	panelview.cui-widget-panelview { flex: 1; }
 	panelview.cui-widget-panelview > vbox { flex: 1; min-height: 50vh; }
+
+    #urlbar-searchmode-switcher {
+        opacity: 0;
+        pointer-events: none;
+    }
 }
 
 
