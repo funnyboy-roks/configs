@@ -13,12 +13,8 @@ set rtp+=~/.config/nvim/base16/nvim/
 call plug#begin()
 " VIM enhancements
 Plug 'ciaranm/securemodelines'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'justinmk/vim-sneak'
-Plug 'lambdalisue/suda.vim' " Allow reading/writing from files which require sudo (:SudaRead/:SudaWrite)
 
 " GUI enhancements
-"Plug 'itchyny/lightline.vim'
 Plug 'andymass/vim-matchup'
 
 " Fuzzy finder
@@ -49,8 +45,6 @@ Plug 'rhysd/vim-clang-format'
 "Plug 'fatih/vim-go'
 Plug 'dag/vim-fish'
 Plug 'godlygeek/tabular'
-" Plug 'plasticboy/vim-markdown'
-" Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'godlygeek/tabular'
 Plug 'preservim/vim-markdown'
 Plug 'lervag/vimtex'
