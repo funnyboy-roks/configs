@@ -230,7 +230,7 @@ mode "$volume-mode" {
 
     bindsym space exec --no-startup-id playerctl --player playerctld play-pause; mode "default"
 
-    bindsym n       exec playerctl -p spotify next
+    bindsym n       exec playerctl  next
     bindsym Shift+n exec playerctl previous
 
     # Back to default: <Esc>, q, or <M-v>
