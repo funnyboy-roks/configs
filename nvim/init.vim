@@ -86,16 +86,10 @@ colorscheme base16-circus
 syntax on
 hi Normal ctermbg=NONE
 
-
-" Customize the highlight a bit.
-" Make comments more prominent -- they are important.
-"call Base16hi("Comment", g:base16_gui09, "", g:base16_cterm09, "", "", "")
-" Make it clearly visible which argument we're at.
-"call Base16hi("LspSignatureActiveParameter", g:base16_gui05, g:base16_gui03, g:base16_cterm05, g:base16_cterm03, "bold", "")
-
 " Give typos a better look in alacritty
 hi SpellBad cterm=undercurl ctermbg=none gui=undercurl guisp=LightRed
 hi SpellCap cterm=undercurl ctermbg=none gui=undercurl guisp=LightBlue
+hi! def link PmenuSel Visual
 
 " LSP configuration
 lua require('lsp_init')
@@ -429,6 +423,7 @@ autocmd BufRead *.tex set filetype=tex
 autocmd BufRead *.trm set filetype=c
 autocmd BufRead *.xlsx.axlsx set filetype=ruby
 autocmd BufRead *.mcmeta set filetype=json
+autocmd BufNewFile,BufRead *.fsh,*.vsh set filetype=glsl
 
 " Script plugins
 autocmd Filetype html,xml,xsl,php source ~/.config/nvim/scripts/closetag.vim
