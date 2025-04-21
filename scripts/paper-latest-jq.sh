@@ -15,12 +15,15 @@ fi
 
 version=$2
 if [ -z "$2" ]; then
-    version=$(wget -O- https://papermc.io/api/v2/projects/paper | jq -r '.versions[-1]')
+    version=$(wget -O- https://api.papermc.io/v2/projects/paper | jq -r '.versions[-1]')
+    echo "latest version: ${version}" >&2
 fi
 
-build=$(wget -O- https://papermc.io/api/v2/projects/paper/versions/${version} | jq -r '.builds[-1]')
+build=$(wget -O- https://api.papermc.io/v2/projects/paper/versions/${version} | jq -r '.builds[-1]')
+echo "latest build: ${build}" >&2
 file="paper-${version}-${build}.jar"
-url="https://papermc.io/api/v2/projects/paper/versions/${version}/builds/${build}/downloads/${file}"
+url="https://api.papermc.io/v2/projects/paper/versions/${version}/builds/${build}/downloads/${file}"
+echo "latest url: ${url}" >&2
 
 wget -O $output $url
 printf "${GREEN}Downloaded latest Paper version:\n\
