@@ -35,6 +35,12 @@ cmp.setup.cmdline(':', {
     })
 })
 
+CustomHover = function()
+    vim.lsp.buf.hover({
+        border = { '', '', '', ' ', '', '', '', ' ' }
+    })
+end
+
 -- Setup lspconfig.
 local on_attach = function(lang)
     return function(_, bufnr)
@@ -51,7 +57,7 @@ local on_attach = function(lang)
         buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
         buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
         if lang ~= 'C' then
-            buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+            buf_set_keymap('n', 'K', '<Cmd>lua CustomHover()<CR>', opts)
         end
         buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
         buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
@@ -69,9 +75,9 @@ local on_attach = function(lang)
         -- Get signatures (and _only_ signatures) when in argument lists.
         require 'lsp_signature'.on_attach({
             doc_lines = 0,
-            handler_opts = {
-                border = 'none'
-            },
+            -- handler_opts = {
+            --     border = 'none'
+            -- },
         })
     end
 end

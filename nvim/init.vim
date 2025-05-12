@@ -414,6 +414,7 @@ au Filetype rust set colorcolumn=100
 au Filetype rust source ~/.config/nvim/scripts/rust.lua
 au Filetype markdown source ~/.config/nvim/scripts/md.vim
 hi NormalFloat guibg=#161616
+hi FloatBorder guibg=#161616
 
 " Help filetype detection
 autocmd BufRead *.plot set filetype=gnuplot
