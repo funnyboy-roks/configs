@@ -1,7 +1,7 @@
 [alias]
-i = "install"
 tiny = "b --profile tiny"
 cl = "clippy"
+c = "check --message-format=short"
 
 # Config based on https://github.com/johnthagen/min-sized-rust
 # Very useful for reducing binary size, though it does make some things less great,
