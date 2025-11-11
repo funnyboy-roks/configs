@@ -1,6 +1,5 @@
 local cmp = require 'cmp'
 
-local lspconfig = require 'lspconfig'
 cmp.setup({
     snippet = {
         -- REQUIRED by nvim-cmp. get rid of it once we can
@@ -20,9 +19,12 @@ cmp.setup({
     sources = cmp.config.sources({
         -- TODO: currently snippets from lsp end up getting prioritized -- stop that!
         { name = 'nvim_lsp' },
-    }, {
-        { name = 'path' },
-    }),
+    }
+   --  ,
+   --  {
+   --      { name = 'path' },
+   --  }
+),
     experimental = {
         ghost_text = true,
     },
@@ -75,9 +77,9 @@ local on_attach = function(lang)
         -- Get signatures (and _only_ signatures) when in argument lists.
         require 'lsp_signature'.on_attach({
             doc_lines = 0,
-            -- handler_opts = {
-            --     border = 'none'
-            -- },
+            handler_opts = {
+                border = 'none'
+            },
         })
     end
 end
@@ -91,14 +93,15 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
 )
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-lspconfig.rust_analyzer.setup {
+vim.lsp.enable('rust_analyzer')
+vim.lsp.config('rust_analyzer', {
     on_attach = on_attach(),
     flags = {
         debounce_text_changes = 150,
     },
     settings = {
         ['rust-analyzer'] = {
-            checkOnSave = {
+            check = {
                 command = 'clippy',
             },
             cargo = {
@@ -112,81 +115,65 @@ lspconfig.rust_analyzer.setup {
         },
     },
     capabilities = capabilities,
-}
+})
 
-lspconfig.pyright.setup {
-    on_attach = on_attach(),
-}
-
--- lspconfig.ts_ls.setup {
---     on_attach = on_attach(),
--- }
-
-lspconfig.denols.setup{
-    on_attach = on_attach(),
-}
-
-lspconfig.eslint.setup({
+vim.lsp.enable('ts_ls')
+vim.lsp.config('ts_ls', {
     on_attach = on_attach(),
 })
 
-lspconfig.svelte.setup {
+-- lspconfig.denols.setup{
+--     on_attach = on_attach(),
+-- }
+
+vim.lsp.enable('eslint')
+vim.lsp.config('eslint', {
     on_attach = on_attach(),
-}
+})
 
-lspconfig.cssls.setup {
+vim.lsp.enable('svelte')
+vim.lsp.config('svelte', {
     on_attach = on_attach(),
-}
+})
 
-lspconfig.gopls.setup {
-    on_attach = on_attach,
-}
-
-lspconfig.clangd.setup {
+vim.lsp.enable('clangd')
+vim.lsp.config('clangd', {
     on_attach = on_attach('C'),
-}
+})
 
-lspconfig.tinymist.setup {
+vim.lsp.enable('tinymist')
+vim.lsp.config('tinymist', {
     on_attach = on_attach(),
-}
+})
 
-lspconfig.gopls.setup{
+vim.lsp.enable('jdtls')
+vim.lsp.config('jdtls', {
     on_attach = on_attach(),
-}
-
-lspconfig.lua_ls.setup {
-    on_attach = on_attach(),
-    on_init = function(client)
-        local path = client.workspace_folders[1].name
-        if vim.loop.fs_stat(path .. '/.luarc.json') or vim.loop.fs_stat(path .. '/.luarc.jsonc') then
-            return
-        end
-
-        client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
-            runtime = {
-                version = 'LuaJIT'
-            },
-            workspace = {
-                checkThirdParty = false,
-                library = {
-                    vim.env.VIMRUNTIME
-                }
-            }
-        })
-    end,
     settings = {
-        Lua = {}
-    }
-}
+        java = {
+            signatureHelp = { enabled = true },
+        },
+    },
+})
+-- lspconfig.java_language_server.setup {
+--     cmd = { '/home/funnyboy_roks/dev/lsp/java-language-server/dist/lang_server_linux.sh' },
+--     settings = {
+--         java = {
+--             externalDependencies = {
+--                 'org.antlr:antlr4-runtime:4.13.2'
+--             }
+--         }
+--     }
+-- }
 
-lspconfig.jdtls.setup {
+vim.lsp.enable('hls')
+vim.lsp.config('hls', {
     on_attach = on_attach(),
-}
+    filetypes = { 'haskell', 'lhaskell', 'cabal' },
+})
 
-lspconfig.nim_langserver.setup{
+vim.lsp.enable('zls')
+vim.lsp.config('zls', {
     on_attach = on_attach(),
-}
-
-vim.g.markdown_fenced_languages = {
-  "ts=typescript"
-}
+    filetypes = { 'haskell', 'lhaskell', 'cabal' },
+})
