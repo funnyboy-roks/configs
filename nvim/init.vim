@@ -22,8 +22,6 @@ Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-Plug 'vifm/vifm.vim'
-
 " Semantic language support
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/lsp_extensions.nvim'
@@ -41,11 +39,8 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'cespare/vim-toml', {'branch': 'main'}
 Plug 'stephpy/vim-yaml'
 Plug 'rust-lang/rust.vim'
-Plug 'rhysd/vim-clang-format'
 "Plug 'fatih/vim-go'
 Plug 'dag/vim-fish'
-Plug 'godlygeek/tabular'
-Plug 'godlygeek/tabular'
 Plug 'preservim/vim-markdown'
 Plug 'lervag/vimtex'
 
