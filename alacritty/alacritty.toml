@@ -1,0 +1,34 @@
+[general]
+import = ["~/.config/alacritty/base16-circus-256.toml"]
+
+[cursor.style]
+blinking = "Never"
+
+[font]
+builtin_box_drawing = true
+size = 16.0
+
+[font.normal]
+# family = "Hurmit Nerd Font"
+# family = "Monofur Nerd Font"
+# family = "Anonymous Pro"
+family = "Iosevka Term Nerd Font Mono"
+
+[[keyboard.bindings]]
+action = "ReceiveChar"
+key = "Space"
+mods = "Shift|Control"
+
+[terminal]
+
+[mouse]
+hide_when_typing = true
+
+[terminal.shell]
+program = "/usr/bin/fish"
+
+[window.padding]
+x = 8
+y = 8
+
+[keyboard]
