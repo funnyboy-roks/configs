@@ -178,7 +178,8 @@ set updatetime=300
 " =============================================================================
 filetype plugin indent on
 set autoindent
-set cinoptions+=l1 " Fix C switch indent: https://vi.stackexchange.com/questions/5218/auto-indent-the-key-of-c-switch-block/5221#5221
+set cinoptions+=l1,j1 " Fix C switch indent: https://vi.stackexchange.com/questions/5218/auto-indent-the-key-of-c-switch-block/5221#5221
+                      " https://neovim.io/doc/user/indent.html#java-cinoptions
 set timeoutlen=300 " http://stackoverflow.com/questions/2158516/delay-before-o-opens-a-new-line
 set encoding=utf-8
 set scrolloff=2
@@ -407,9 +408,13 @@ au Filetype rust set colorcolumn=100
 " Disable semantic highlights for rust
 " see: https://vi.stackexchange.com/questions/41932/syntax-highlighting-breaks-with-rust-analyzer/41933#41933
 au Filetype rust source ~/.config/nvim/scripts/rust.lua
-au Filetype markdown source ~/.config/nvim/scripts/md.vim
+" au Filetype markdown source ~/.config/nvim/scripts/md.vim
 hi NormalFloat guibg=#161616
 hi FloatBorder guibg=#161616
+
+" compound initialisers in C have an error for the {}.
+" https://github.com/neovim/neovim/issues/14980
+hi link cErrInParen None
 
 " Help filetype detection
 autocmd BufRead *.plot set filetype=gnuplot
@@ -420,6 +425,7 @@ autocmd BufRead *.trm set filetype=c
 autocmd BufRead *.xlsx.axlsx set filetype=ruby
 autocmd BufRead *.mcmeta set filetype=json
 autocmd BufNewFile,BufRead *.fsh,*.vsh set filetype=glsl
+autocmd BufNewFile,BufRead *.st set filetype=stark
 
 " Script plugins
 autocmd Filetype html,xml,xsl,php source ~/.config/nvim/scripts/closetag.vim
