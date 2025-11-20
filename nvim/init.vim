@@ -58,9 +58,6 @@ Plug 'junegunn/vim-easy-align'
 
 Plug 'vim-scripts/AnsiEsc.vim'
 
-" Give me markdown preview (really just for maths)
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-
 call plug#end()
 
 set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
