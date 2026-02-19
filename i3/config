@@ -48,6 +48,7 @@ bindsym $mod+Shift+l move right
 
 # Split in h_o_rizontal orientation (not $mod+h for vim movement keybinds)
 bindsym $mod+o split h
+bindsym $mod+Shift+o split v
 
 # Split in _v_ertical orientation
 # bindsym $mod+v split v
@@ -59,8 +60,6 @@ bindsym $mod+f fullscreen toggle
 #   Disabled bc never used: bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
-
-bindsym $mod+Shift+o [con_mark="back"] focus; [con_mark="back"] unmark
 
 bindsym $mod+Shift+space floating toggle
 # Toggle sticky (Independent of workspaces)
@@ -150,13 +149,9 @@ bindsym $mod+z exec boomer
 
 assign [class="(?i)spotify"] $ws0
 assign [class="(?i)discord"] $ws0
-assign [class="(?i)jetbrains"] $ws1
 assign [class="(?i)gdlauncher"] $ws5
 assign [class="(?i)minecraft"] $ws5
-assign [class="(?i)modrinth-app"] $ws5
 assign [class="(?i)steam"] $ws6
-assign [class="(?i)thunderbird"] $ws8
-for_window [class="(?i)nannou"] floating enable
 
 ## </Window Config>
 
@@ -181,6 +176,7 @@ mode "resize" {
     bindsym Shift+j resize grow   height 50 px or 50 ppt
 
     # Back to default: <Esc>, <C-j>, or <M-r>
+    bindsym q mode "default"
     bindsym Escape mode "default"
     bindsym Ctrl+j mode "default"
     bindsym $mod+r mode "default"
@@ -202,7 +198,7 @@ set $spotify-mode s  [g]o [s]huffle [l]oop [n]ext [N]-previous
 bindsym $mod+s mode "$spotify-mode"
 mode "$spotify-mode" {
 
-    bindsym g mark --add 'back' ; [class="(?i)spotify"] focus ; mode "default";
+    bindsym g [class="(?i)spotify"] focus ; mode "default";
 
     bindsym s exec playerctl -p spotify shuffle toggle ; mode "default"
 
@@ -230,7 +226,7 @@ mode "$volume-mode" {
 
     bindsym space exec --no-startup-id playerctl --player playerctld play-pause; mode "default"
 
-    bindsym n       exec playerctl  next
+    bindsym n       exec playerctl next
     bindsym Shift+n exec playerctl previous
 
     # Back to default: <Esc>, q, or <M-v>
