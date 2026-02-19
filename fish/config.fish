@@ -1,3 +1,4 @@
+fish_add_path ~/scripts
 # Get the time elapsed since a program started
 # Searches all running processes for the name provided in $1
 function elapsed
@@ -89,24 +90,18 @@ function nvim
 end
 
 function fish_prompt
-    set --local duration $CMD_DURATION
     set --local exit_status $status
+    set --local duration $CMD_DURATION
 
-	set_color brblack
-	echo -n "["(date "+%H:%M")"] "
-    # set_color blue
-    # echo -n (command -q hostname; and hostname; or hostnamectl hostname)
-    set_color brblack
-    # echo -n ':'
-    set_color blue
-    prompt_pwd2
-	set_color brblack
-	printf '%s ' (__fish_git_prompt | sed 's/^ (/ /' | sed 's/)$//')
+    set -gx BRANCH (git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
+
+	echo -n (set_color brblack)"["(date "+%H:%M")"] "
+    set_color blue; prompt_pwd2
+	printf (set_color brblack)'%s ' (__fish_git_prompt | sed 's/^ (/ /' | sed 's/)$//')
 
     # Show the time that the previous command took
     if [ $duration -gt '3000' ]
-        set_color yellow
-        printf '%s ' (format_duration $duration false)
+        printf (set_color yellow)'%s ' (format_duration $duration false)
     end
 
     # Error shown by prompt char
