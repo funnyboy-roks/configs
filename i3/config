@@ -239,13 +239,13 @@ mode "$volume-mode" {
 set $dtime dt d(d.m.y)  D(dd M Y)  t(hh:mm)  T(hh:mm:ss)  f(D+t)  F(f+weekday) R
 bindsym $mod+t mode "$dtime"
 mode "$dtime" {
-    bindsym       d exec ~/.config/i3/discord-time-prompt.zsh -d; mode "default"
-    bindsym Shift+d exec ~/.config/i3/discord-time-prompt.zsh -D; mode "default"
-    bindsym       t exec ~/.config/i3/discord-time-prompt.zsh -t; mode "default"
-    bindsym Shift+t exec ~/.config/i3/discord-time-prompt.zsh -T; mode "default"
-    bindsym       f exec ~/.config/i3/discord-time-prompt.zsh -f; mode "default"
-    bindsym Shift+f exec ~/.config/i3/discord-time-prompt.zsh -F; mode "default"
-    bindsym Shift+r exec ~/.config/i3/discord-time-prompt.zsh -R; mode "default"
+    bindsym       d exec ~/.config/i3/discord-time-prompt.sh -d; mode "default"
+    bindsym Shift+d exec ~/.config/i3/discord-time-prompt.sh -D; mode "default"
+    bindsym       t exec ~/.config/i3/discord-time-prompt.sh -t; mode "default"
+    bindsym Shift+t exec ~/.config/i3/discord-time-prompt.sh -T; mode "default"
+    bindsym       f exec ~/.config/i3/discord-time-prompt.sh -f; mode "default"
+    bindsym Shift+f exec ~/.config/i3/discord-time-prompt.sh -F; mode "default"
+    bindsym Shift+r exec ~/.config/i3/discord-time-prompt.sh -R; mode "default"
 
     # Back to default: <Esc>, <C-j>, or <M-s>
     bindsym Escape mode "default"
