@@ -290,4 +290,4 @@ exec picom
 exec dlauncher
 exec flameshot
 exec thunderbird
-exec_always protonvpn-app
+exec protonvpn-app
