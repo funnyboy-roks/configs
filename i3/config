@@ -134,6 +134,7 @@ bindsym XF86Sleep exec ~/.config/i3/lock
 
 # Screenshot
 bindsym Ctrl+Shift+Print exec "rm ~/pictures/screenshot.png; flameshot gui -c -p ~/pictures/screenshot.png"
+bindsym Ctrl+Print exec ~/.local/bin/xsnip -f ~/pictures/screenshot.png
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl --player playerctld play-pause
