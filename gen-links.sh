@@ -39,7 +39,7 @@ mkln "tmux"                 "$HOME/.config/tmux"
 mkln "lemurs/config.toml"   "/etc/lemurs/config.toml"
 mkln "lemurs/wms"           "/etc/lemurs/wms"
 
-for path in $(find "~/.mozilla/firefox" -maxdepth 1 -iname '*.dev-edition-default*'); do
+for path in $(find ~/.mozilla/firefox -maxdepth 1 -iname '*.*' -type d); do
     mkdir "$path/chrome"
     mkln "firefox/userChrome.css" "$path/chrome/userChrome.css"
 done
