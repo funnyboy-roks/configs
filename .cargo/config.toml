@@ -13,4 +13,4 @@ strip = true
 lto = true
 
 [build]
-target-dir = "/home/funnyboy_roks/.cargo-target"
+target-dir = "/home/fbr/.cargo-target"
