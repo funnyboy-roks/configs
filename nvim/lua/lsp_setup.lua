@@ -37,7 +37,7 @@ vim.lsp.config('jdtls', {
 vim.lsp.enable('jdtls')
 
 vim.lsp.config('kotlin_lsp', {
-    cmd = { "/home/funnyboy_roks/downloads/kotlin-lsp/kotlin-lsp.sh", "--stdio" }
+    cmd = { "/home/fbr/downloads/kotlin-lsp/kotlin-lsp.sh", "--stdio" }
 })
 vim.lsp.enable('kotlin_lsp')
 
