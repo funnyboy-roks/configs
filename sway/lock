@@ -1,0 +1,16 @@
+#!/bin/bash
+# Script to handle locking the screen
+
+swayidle -w timeout 5 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' &
+idle_status=$!
+playerctl -a pause
+dunstctl set-paused true
+
+~/scripts/log.sh lock
+time_locked=$(/usr/bin/time -f '%E' bash -c "swaylock -i ~/sync/wallpapers/lock.png -F &> /dev/null" 2>&1)
+~/scripts/log.sh unlock
+
+kill $idle_status
+dunstctl set-paused false
+
+notify-send 'Time Locked:' "$time_locked" -r 1238129238 -u low

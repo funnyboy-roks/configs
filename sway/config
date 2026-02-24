@@ -1,0 +1,228 @@
+# Default config for sway
+#
+# Copy this to ~/.config/sway/config and edit it to your liking.
+#
+# Read `man 5 sway` for a complete reference.
+
+### Variables
+#
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+
+### Output configuration
+#
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+include ~/.config/sway/outputs
+
+### Idle configuration
+#
+# Example configuration:
+#
+# exec swayidle -w \
+#          timeout 300 'swaylock -f -c 000000' \
+#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+#          before-sleep 'swaylock -f -c 000000'
+#
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+
+### Input configuration
+#
+# Example configuration:
+#
+#   input type:touchpad {
+#       dwt enabled
+#       tap enabled
+#       natural_scroll enabled
+#       middle_emulation enabled
+#   }
+#
+input type:keyboard {
+    xkb_layout "gb"
+}
+
+### Key bindings
+# Basics:
+    bindsym $mod+Return exec alacritty
+    bindsym $mod+Shift+q kill
+    bindsym $mod+d exec fuzzel
+
+    # Drag floating windows by holding down $mod and left mouse button.
+    floating_modifier $mod normal
+
+    # Reload the configuration file
+    bindsym $mod+Shift+r reload
+
+    # Lock the screen
+    bindsym $mod+Escape exec ~/.config/sway/lock
+#
+# Moving around:
+#
+    # Move your focus around
+    bindsym $mod+h focus left
+    bindsym $mod+j focus down
+    bindsym $mod+k focus up
+    bindsym $mod+l focus right
+
+    bindsym $mod+Ctrl+h focus output left
+    bindsym $mod+Ctrl+j focus output down
+    bindsym $mod+Ctrl+k focus output up
+    bindsym $mod+Ctrl+l focus output right
+
+    # Move the focused window with the same, but add Shift
+    bindsym $mod+Shift+h move left
+    bindsym $mod+Shift+j move down
+    bindsym $mod+Shift+k move up
+    bindsym $mod+Shift+l move right
+
+    bindsym $mod+Ctrl+Shift+h move workspace to output left
+    bindsym $mod+Ctrl+Shift+j move workspace to output down
+    bindsym $mod+Ctrl+Shift+k move workspace to output up
+    bindsym $mod+Ctrl+Shift+l move workspace to output right
+
+# Workspaces:
+    # Switch to workspace
+    bindsym $mod+1 workspace number 1
+    bindsym $mod+2 workspace number 2
+    bindsym $mod+3 workspace number 3
+    bindsym $mod+4 workspace number 4
+    bindsym $mod+5 workspace number 5
+    bindsym $mod+6 workspace number 6
+    bindsym $mod+7 workspace number 7
+    bindsym $mod+8 workspace number 8
+    bindsym $mod+9 workspace number 9
+    bindsym $mod+0 workspace number 0
+
+    # Move focused container to workspace
+    bindsym $mod+Shift+1 move container to workspace number 1
+    bindsym $mod+Shift+2 move container to workspace number 2
+    bindsym $mod+Shift+3 move container to workspace number 3
+    bindsym $mod+Shift+4 move container to workspace number 4
+    bindsym $mod+Shift+5 move container to workspace number 5
+    bindsym $mod+Shift+6 move container to workspace number 6
+    bindsym $mod+Shift+7 move container to workspace number 7
+    bindsym $mod+Shift+8 move container to workspace number 8
+    bindsym $mod+Shift+9 move container to workspace number 9
+    bindsym $mod+Shift+0 move container to workspace number 0
+
+
+    assign [class="(?i)spotify"] 0
+    assign [class="(?i)discord"] 0
+    assign [class="(?i)gdlauncher"] 5
+    assign [class="(?i)minecraft"] 5
+    assign [class="(?i)steam"] 6
+
+# Layout stuff:
+    # You can "split" the current object of your focus with
+    # $mod+b or $mod+v, for horizontal and vertical splits
+    # respectively.
+    bindsym $mod+o splith
+    bindsym $mod+Shift+o splitv
+
+    # Switch the current container between different layout styles
+    bindsym $mod+w layout tabbed
+    bindsym $mod+e layout toggle split
+    bindsym $mod+f fullscreen
+    # Toggle the current focus between tiling and floating mode
+    bindsym $mod+Shift+space floating toggle
+    # Swap focus between the tiling area and the floating area
+    bindsym $mod+space focus mode_toggle
+
+    # Move focus to the parent container
+    bindsym $mod+a focus parent
+
+# Resizing containers:
+bindsym $mod+r mode "resize"
+mode "resize" {
+    bindsym       h resize shrink width  10px
+    bindsym       j resize grow   height 10px
+    bindsym       k resize shrink height 10px
+    bindsym       l resize grow   width  10px
+    bindsym Shift+h resize shrink width  50px
+    bindsym Shift+j resize grow   height 50px
+    bindsym Shift+k resize shrink height 50px
+    bindsym Shift+l resize grow   width  50px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym q mode "default"
+}
+
+set $volume-mode v  [j/k] [m]ute [space]-pause [n]ext [N]-previous
+bindsym $mod+v mode "$volume-mode"
+mode "$volume-mode" {
+    bindsym Shift+k exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1%
+    bindsym Shift+j exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1%
+    bindsym k exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+    bindsym j exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+    bindsym m exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle; mode "default"
+
+    bindsym space exec --no-startup-id playerctl --player playerctld play-pause; mode "default"
+
+    bindsym n       exec playerctl next
+    bindsym Shift+n exec playerctl previous
+
+    # Back to default: <Esc>, q, or <M-v>
+    bindsym Escape mode "default"
+    bindsym q mode "default"
+    bindsym $mod+v mode "default"
+}
+
+set $dtime dt d(d.m.y)  D(dd M Y)  t(hh:mm)  T(hh:mm:ss)  f(D+t)  F(f+weekday) R
+bindsym $mod+t mode "$dtime"
+mode "$dtime" {
+    bindsym       d exec ~/scripts/discord-time-prompt.sh -d; mode "default"
+    bindsym Shift+d exec ~/scripts/discord-time-prompt.sh -D; mode "default"
+    bindsym       t exec ~/scripts/discord-time-prompt.sh -t; mode "default"
+    bindsym Shift+t exec ~/scripts/discord-time-prompt.sh -T; mode "default"
+    bindsym       f exec ~/scripts/discord-time-prompt.sh -f; mode "default"
+    bindsym Shift+f exec ~/scripts/discord-time-prompt.sh -F; mode "default"
+    bindsym Shift+r exec ~/scripts/discord-time-prompt.sh -R; mode "default"
+
+    # Back to default: <Esc>, <C-j>, or <M-s>
+    bindsym Escape mode "default"
+    bindsym Ctrl+j mode "default"
+    bindsym $mod+t mode "default"
+}
+
+
+# Utilities:
+    # Special keys to adjust volume via PulseAudio
+    bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
+    bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
+    bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
+    bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+    # Flameshot on wayland is a PITA... need to fix
+    # bindsym Ctrl+Shift+Print exec "rm ~/pictures/screenshot.png; flameshot gui -c -p ~/pictures/screenshot.png"
+    bindsym Ctrl+Shift+Print exec grim -t ppm -g "$(slurp)" - | swappy -f - -o - | tee ~/pictures/screenshot.png | wl-copy
+    bindsym $mod+z exec boomer
+
+# Theming
+font pango: Iosevka 10
+seat seat0 xcursor_theme volantes_cursors 24
+
+set $text-color             #55ff77
+set $light-bg-color         #191919
+set $dark-bg-color          #101013
+set $inactive-text-color    #a0a0b0
+set $urgent-text-color      #dc657d
+
+# window colors
+#                       border           background       text                 indicator
+client.focused          $dark-bg-color   $dark-bg-color   $text-color          #0000aa
+client.unfocused        $light-bg-color  $light-bg-color  $inactive-text-color #0000aa
+client.focused_inactive $light-bg-color  $light-bg-color  $inactive-text-color #0000aa
+client.urgent           $light-bg-color  $light-bg-color  $urgent-text-color   #0000aa
+
+title_align center
+default_border none
+
+output * bg /home/fbr/sync/wallpapers/desktop.jpg fill
+
+# Status Bar:
+exec waybar
+exec dunst
+
+include /etc/sway/config.d/*
