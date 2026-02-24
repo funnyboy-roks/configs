@@ -12,20 +12,15 @@ size = 16.0
 # family = "Hurmit Nerd Font"
 # family = "Monofur Nerd Font"
 # family = "Anonymous Pro"
-family = "Iosevka Term Nerd Font Mono"
+family = "Iosevka Nerd Font"
 
 [[keyboard.bindings]]
 action = "ReceiveChar"
 key = "Space"
 mods = "Shift|Control"
 
-[terminal]
-
 [mouse]
 hide_when_typing = true
-
-[terminal.shell]
-program = "/usr/bin/fish"
 
 [window.padding]
 x = 8
