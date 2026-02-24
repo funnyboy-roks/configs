@@ -1,0 +1,133 @@
+/* https://github.com/mnussbaum/base16-waybar */
+@define-color base00 #191919;
+@define-color base01 #202020;
+@define-color base02 #303030;
+@define-color base03 #5f5a60;
+@define-color base04 #505050;
+@define-color base05 #a7a7a7;
+@define-color base06 #808080;
+@define-color base07 #ffffff;
+@define-color base08 #dc657d;
+@define-color base09 #4bb1a7;
+@define-color base0A #c3ba63;
+@define-color base0B #84b97c;
+@define-color base0C #4bb1a7;
+@define-color base0D #639ee4;
+@define-color base0E #b888e2;
+@define-color base0F #b888e2;
+
+* {
+	font-family: "Iosevka";
+	font-size: 16px;
+}
+
+window#waybar {
+	background: @base00;
+	color: @base07;
+}
+
+tooltip {
+	background: @base01;
+	border: 1px solid @base02;
+}
+tooltip label {
+	color: white;
+}
+
+#custom-separator {
+    padding: 0 .5em;
+    color: @base03;
+}
+
+/* modules-left */
+
+.modules-left {
+    padding-left: .3em;
+}
+
+#workspaces button {
+    padding: 0 .1em;
+	background: transparent;
+	color: #bbbbbb;
+}
+
+#workspaces button:hover {
+	/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+	border: none;
+	box-shadow: inherit;
+	text-shadow: inherit;
+}
+
+#workspaces button.focused {
+	color: @base0D;
+}
+
+#mode {
+    padding-left: 1em;
+    color: @base09;
+}
+
+/* modules-right */
+
+.modules-right {
+    padding-right: .5em;
+}
+
+#custom-media {
+    border-bottom: 2px solid #1db954;
+}
+
+#cpu {
+	border-bottom: 2px solid #f90000;
+}
+
+#memory {
+    border-bottom: 2px solid #4bffdc;
+}
+
+#battery {
+	color: white;
+}
+
+#pulseaudio {
+    border-bottom: 2px solid #0a6cf5;
+}
+
+#battery.charging {
+	border-bottom: 3px solid #016b2b;
+}
+
+@keyframes blink {
+	to {
+		background-color: #ffffff;
+		color: black;
+	}
+}
+
+#battery.warning {
+	background: #f18e1b;
+}
+
+#battery.warning:not(.charging) {
+	animation-name: blink;
+	animation-duration: 0.5s;
+	animation-timing-function: steps(12);
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+.modules-right label, .modules-center label {
+    margin: 0 .75em;
+}
+
+#tray {
+    margin-left: 1em;
+}
+
+/* separators */
+.modules-right *:not(:first-child), .modules-center *:not(:first-child) {
+	background-image: linear-gradient(@base00 4%, @base03 5%, @base03 95%, @base00 96%);
+	background-size: 2px 60%;
+	background-position: 0 50%;
+	background-repeat: no-repeat;
+}
