@@ -34,19 +34,10 @@ tooltip label {
 	color: white;
 }
 
-#custom-separator {
-    padding: 0 .5em;
-    color: @base03;
-}
-
 /* modules-left */
 
-.modules-left {
-    padding-left: .3em;
-}
-
 #workspaces button {
-    padding: 0 .1em;
+    padding: 0 0em;
 	background: transparent;
 	color: #bbbbbb;
 }
@@ -63,15 +54,10 @@ tooltip label {
 }
 
 #mode {
-    padding-left: 1em;
     color: @base09;
 }
 
 /* modules-right */
-
-.modules-right {
-    padding-right: .5em;
-}
 
 #custom-media {
     border-bottom: 2px solid #1db954;
@@ -116,18 +102,19 @@ tooltip label {
 	animation-direction: alternate;
 }
 
-.modules-right label, .modules-center label {
+/* separators */
+
+.modules-left > * > *, .modules-right > * > *, .modules-center > * > * {
     margin: 0 .75em;
 }
 
-#tray {
-    margin-left: 1em;
-}
-
-/* separators */
-.modules-right *:not(:first-child), .modules-center *:not(:first-child) {
-	background-image: linear-gradient(@base00 4%, @base03 5%, @base03 95%, @base00 96%);
+.modules-left *:not(:first-child), .modules-right *:not(:first-child), .modules-center *:not(:first-child) {
+	background-image: linear-gradient(@base03);
 	background-size: 2px 60%;
 	background-position: 0 50%;
 	background-repeat: no-repeat;
+}
+
+#tray * {
+	background-image: none;
 }

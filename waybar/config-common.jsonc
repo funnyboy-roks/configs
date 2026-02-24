@@ -1,0 +1,64 @@
+{
+    // "layer": "top", // Waybar at top layer
+    "position": "bottom",
+    "height": 30, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 0, // Gaps between modules (4px)
+    "modules-left": [
+        "sway/workspaces",
+        "sway/mode"
+    ],
+    "modules-center": [
+        "clock",
+        "custom/date"
+    ],
+    "tray": {
+        "spacing": 10
+    },
+    "cpu": {
+        "format": "  {usage}%",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "  {}%"
+    },
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": ["", "", ""]
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}  {capacity}%",
+        "format-full": "",
+        "format-plugged": " {capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{icon}  {volume}%",
+        "format-muted": "  {format_source}",
+        "format-icons": {
+            "default": ["", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "custom/media": {
+        "escape": true,
+        "exec": "$HOME/.config/waybar/player-mpris-tail.py | marquee -jd250 -w 25",
+        "on-click-left": "$HOME/.config/waybar/player-mpris-tail.py previous",
+        "on-click-right": "$HOME/.config/waybar/player-mpris-tail.py next",
+        "on-click-middle": "$HOME/.config/waybar/player-mpris-tail.py play-pause"
+    },
+    "clock": {
+        "interval": 1,
+        "format": "{:%H:%M:%S}"
+    },
+    "custom/date": {
+        "interval": 1,
+        "exec": "LC_ALL=de_DE.utf8 date +'%A, %d. %B %Y'"
+    }
+}
