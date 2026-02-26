@@ -1,4 +1,5 @@
 fish_add_path ~/scripts
+fish_add_path ~/.cargo/bin
 # Get the time elapsed since a program started
 # Searches all running processes for the name provided in $1
 function elapsed
@@ -33,7 +34,6 @@ if status is-interactive
     alias mkdir="mkdir -pv" # Create parent folders and give me verbosity
     alias python="python3"
     alias tree="eza -ThaF --icons --git -I 'target|node_modules|venv|.git'"
-    alias :q="exit" # I can't help the vi
     alias serve="basic-http-server" # https://github.com/brson/basic-http-server
     alias feh='feh -B "#222" --force-aliasing --keep-zoom-vp -z'
 
@@ -82,7 +82,7 @@ function prompt_pwd2
 end
 
 function fish_title
-    echo (whoami)@(hostname): (prompt_pwd2)
+    echo (whoami)@(uname -n): (prompt_pwd2)
 end
 
 function nvim
@@ -115,19 +115,4 @@ function fish_prompt
 	set_color normal
 end
 
-function fish_greeting
-end
-# function fish_greeting
-#     echo -e (uname -ro | awk '{print " \\\\e[1mOS: \\\\e[0;32m"$0"\\\\e[0m"}')
-# 	echo -e (uptime -p | sed 's/^up //' | awk '{print " \\\\e[1mUptime: \\\\e[0;32m"$0"\\\\e[0m"}')
-# 	echo -e (uname -n | awk '{print " \\\\e[1mHostname: \\\\e[0;32m"$0"\\\\e[0m"}')
-# 	echo -e ' \e[1mDisk usage:\e[0m'
-# 	echo -ne (\
-# 		df -l -h | grep -E 'dev/(xvda|sd|mapper|nvme)' | \
-# 		awk '{printf "\\\\t%s\\\\t%4s / %4s  %s\\\\n\n", $6, $3, $2, $5}' | \
-# 		sed -e 's/^\(.*\([8][5-9]\|[9][0-9]\)%.*\)$/\\\\e[0;31m\1\\\\e[0m/' -e 's/^\(.*\([7][5-9]\|[8][0-4]\)%.*\)$/\\\\e[0;33m\1\\\\e[0m/' | \
-# 		paste -sd ''\
-# 	)
-# 
-# 	set_color normal
-# end
+function fish_greeting; end

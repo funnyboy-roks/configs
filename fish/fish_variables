@@ -1,6 +1,5 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR --export DISPLAY:\x3a1
 SETUVAR __fish_initialized:4300
 SETUVAR _fisher_upgraded_to_4_4:\x1d
-SETUVAR fish_user_paths:/home/funnyboy_roks/scripts\x1e/home/funnyboy_roks/\x2efzf/bin
+SETUVAR fish_user_paths:/home/fbr/scripts\x1e/home/fbr/\x2ecargo/bin\x1e/home/funnyboy_roks/scripts\x1e/home/funnyboy_roks/\x2efzf/bin
