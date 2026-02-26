@@ -6,7 +6,7 @@ vim.lsp.config('rust_analyzer', {
             },
             cargo = {
                 allFeatures = true,
-                targetDir = '/home/funnyboy_roks/.cargo-target',
+                targetDir = '/home/fbr/.cargo-target',
             },
             completion = {
                 postfix = {
