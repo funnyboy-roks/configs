@@ -22,6 +22,11 @@
     "memory": {
         "format": "  {}%"
     },
+    // https://github.com/funnyboy-roks/github-notif-indicator
+    "custom/github": {
+        "exec": "github-notif-indicator $HOME/.github/polybar-secret 10",
+        "format": "{}"
+    },
     "temperature": {
         "critical-threshold": 80,
         "format": "{icon} {temperatureC}°C",

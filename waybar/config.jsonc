@@ -6,6 +6,7 @@
         "modules-right": [
             "custom/media",
             "pulseaudio",
+            "custom/github",
             "temperature",
             "cpu",
             "memory",

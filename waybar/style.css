@@ -59,6 +59,10 @@ tooltip label {
 
 /* modules-right */
 
+#custom-github {
+    border-bottom: 2px solid #facade;
+}
+
 #custom-media {
     border-bottom: 2px solid #1db954;
 }
