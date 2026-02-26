@@ -16,10 +16,12 @@
         "spacing": 10
     },
     "cpu": {
+        "interval": 5,
         "format": "  {usage}%",
         "tooltip": false
     },
     "memory": {
+        "interval": 5,
         "format": "  {}%"
     },
     // https://github.com/funnyboy-roks/github-notif-indicator
@@ -28,9 +30,10 @@
         "format": "{}"
     },
     "temperature": {
+        "interval": 5,
         "critical-threshold": 80,
-        "format": "{icon} {temperatureC}°C",
-        "format-icons": ["", "", ""]
+        "thermal-zone": 2,
+        "format": " {temperatureC}°C"
     },
     "battery": {
         "states": {
