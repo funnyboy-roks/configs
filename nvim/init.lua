@@ -127,9 +127,9 @@ vim.keymap.set('n', '#', '#zz', { silent = true })
 vim.keymap.set('n', 'g*', 'g*zz', { silent = true })
 
 -- copy with system clipboard
-vim.keymap.set('n', '<leader>p', '"+p');
-vim.keymap.set('n', '<leader>P', '"+P');
-vim.keymap.set('n', '<leader>y', '"+y');
+vim.keymap.set('', '<leader>p', '"+p');
+vim.keymap.set('', '<leader>P', '"+P');
+vim.keymap.set('', '<leader>y', '"+y');
 
 -- magic in search 
 vim.keymap.set('n', '?', '?\\v')
