@@ -438,5 +438,6 @@ require("lazy").setup({
      'kaarmu/typst.vim',
      'zah/nim.vim',
      'sirtaj/vim-openscad',
+     'Airbus5717/c3.vim',
 })
 
