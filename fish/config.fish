@@ -1,10 +1,11 @@
 fish_add_path ~/scripts
 fish_add_path ~/.cargo/bin
+fish_add_path ~/.local/bin
 # Get the time elapsed since a program started
 # Searches all running processes for the name provided in $1
 function elapsed
     set proc $argv[1]
-    ps -eo pid,cmd,stime,etime | \grep -iE "$proc|PID" | \grep -vE '(grep|ps)'
+    ps -eo pid,cmd:50,stime,etime | \grep -iE "$proc|PID" | \grep -vE '(grep|ps)'
 end
 
 # Sync local files with server files
@@ -20,9 +21,9 @@ function fs
     unison -auto ~/sync ssh://server/sync
 end
 
-export EDITOR=nvim
-export MANPAGER='nvim +Man!'
-export PAGER='nvim -R'
+set -x EDITOR nvim
+set -x MANPAGER 'nvim +Man!'
+set -x PAGER 'nvim -R'
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
