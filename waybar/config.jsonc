@@ -3,14 +3,16 @@
     {
         "include": "~/.config/waybar/config-common.jsonc",
         "output": "DP-3",
+        "ipc": true,
+        "id": "primary",
         "modules-right": [
             "custom/media",
             "pulseaudio",
             "custom/github",
-            "temperature",
+            "custom/temperature",
             "cpu",
             "memory",
-            "tray"
+            "tray",
         ]
     },
     {
@@ -18,9 +20,10 @@
         "output": "!DP-3",
         "modules-right": [
             "pulseaudio",
-            "temperature",
+            "custom/temperature",
             "cpu",
-            "memory"
+            "memory",
+            "custom/qbit",
         ]
     }
 ]

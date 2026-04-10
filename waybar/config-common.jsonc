@@ -29,11 +29,10 @@
         "exec": "github-notif-indicator $HOME/.github/polybar-secret 10",
         "format": "{}"
     },
-    "temperature": {
+    "custom/temperature": {
         "interval": 5,
-        "critical-threshold": 80,
-        "thermal-zone": 2,
-        "format": " {temperatureC}°C"
+        "format": " {}°C",
+        "exec": "sensors -j 2> /dev/null | jq -r '.[\"coretemp-isa-0000\"][\"Package id 0\"].temp1_input' | cut -d. -f1"
     },
     "battery": {
         "states": {
@@ -57,7 +56,7 @@
     "custom/media": {
         "escape": true,
         "exec": "$HOME/.config/waybar/player-mpris-tail.py | marquee -jd250 -w 25",
-        "on-click-left": "$HOME/.config/waybar/player-mpris-tail.py previous",
+        "on-click": "$HOME/.config/waybar/player-mpris-tail.py previous",
         "on-click-right": "$HOME/.config/waybar/player-mpris-tail.py next",
         "on-click-middle": "$HOME/.config/waybar/player-mpris-tail.py play-pause"
     },
@@ -68,5 +67,10 @@
     "custom/date": {
         "interval": 1,
         "exec": "LC_ALL=de_DE.utf8 date +'%A, %d. %B %Y'"
+    },
+    "custom/qbit": {
+        "interval": 60,
+        "exec": "qbit",
+        "on-click": "qbit stats"
     }
 }
