@@ -40,6 +40,7 @@ include ~/.config/sway/outputs
 #
 input type:keyboard {
     xkb_layout "gb"
+    xkb_options ctrl:nocaps
 }
 
 ### Key bindings
@@ -198,6 +199,17 @@ mode "$dtime" {
     # bindsym Ctrl+Shift+Print exec "rm ~/pictures/screenshot.png; flameshot gui -c -p ~/pictures/screenshot.png"
     bindsym Ctrl+Shift+Print exec grim -t ppm -g "$(slurp)" - | swappy -f - -o - | tee ~/pictures/screenshot.png | wl-copy
     bindsym $mod+z exec boomer
+    bindsym $mod+Period exec emoji
+    bindsym $mod+b exec ~/.config/waybar/toggle.sh
+
+# OBS Controls:
+# https://github.com/jonhoo/obs-do
+bindsym --locked KP_1 exec obs-do set-scene '(1) Welcome'
+bindsym --locked KP_2 exec obs-do set-scene '(2) Main'
+bindsym --locked KP_3 exec obs-do set-scene '(3) BRB'
+bindsym --locked KP_4 exec obs-do set-scene '(4) BRB Transparent'
+bindsym --locked KP_5 exec obs-do set-scene '(5) Thanks For Coming'
+bindsym --locked KP_0 exec obs-do toggle-mute
 
 # Theming
 font pango: Iosevka 10
@@ -221,8 +233,15 @@ default_border none
 
 output * bg /home/fbr/sync/wallpapers/desktop.jpg fill
 
+bar primary {
+	swaybar_command /bin/true
+	mode dock
+	position bottom
+}
+
 # Status Bar:
 exec waybar
 exec dunst
+exec protonvpn-app
 
 include /etc/sway/config.d/*
