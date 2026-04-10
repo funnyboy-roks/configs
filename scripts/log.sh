@@ -3,4 +3,4 @@
 # Usage: log.sh <message>
 
 time="$(date -uI'seconds' | cut -d'+' -f1)"
-echo "[$time] $*" >> "$HOME/log"
+echo "[$time] $*" >> /home/fbr/log
