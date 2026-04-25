@@ -1,0 +1,30 @@
+# Generated with nwg-displays
+output "DP-3" {
+    mode  3840x2160@59.997Hz
+    pos 2560 1925
+    transform normal
+    scale 1.5
+    scale_filter linear
+    adaptive_sync off
+    dpms on
+}
+
+output "DP-2" {
+    mode  2560x1440@59.951Hz
+    pos 5120 1351
+    transform 270
+    scale 1.0
+    scale_filter nearest
+    adaptive_sync off
+    dpms on
+}
+
+output "DP-1" {
+    mode  2560x1440@59.951Hz
+    pos 0 1925
+    transform normal
+    scale 1.0
+    scale_filter nearest
+    adaptive_sync off
+    dpms on
+}
