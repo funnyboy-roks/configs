@@ -89,6 +89,8 @@ vim.keymap.set('', 'L', '$')
 -- visual line
 vim.keymap.set('n', 'j', 'gj')
 vim.keymap.set('n', 'k', 'gk')
+vim.keymap.set('v', 'j', 'gj')
+vim.keymap.set('v', 'k', 'gk')
 -- bigger line step
 vim.keymap.set('', '<A-j>', '10gj')
 vim.keymap.set('', '<A-k>', '10gk')
