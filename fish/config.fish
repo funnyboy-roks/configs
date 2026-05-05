@@ -97,13 +97,21 @@ function fish_prompt
     set -gx BRANCH (git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
 
 	echo -n (set_color brblack)"["(date "+%H:%M")"] "
-    set_color blue; prompt_pwd2
-	printf (set_color brblack)'%s ' (__fish_git_prompt | sed 's/^ (/ /' | sed 's/)$//')
+    set -q SSH_CONNECTION; and echo -n (whoami)"@"(hostname)" "
+    if set -q fish_private_mode
+        printf (set_color red)(prompt_pwd2)(set_color blue)'*'
+    else 
+        set_color blue; prompt_pwd2
+    end
+	printf (set_color brblack)'%s' (__fish_git_prompt | sed 's/^ (/ /' | sed 's/)$//')
 
     # Show the time that the previous command took
     if [ $duration -gt '3000' ]
-        printf (set_color yellow)'%s ' (format_duration $duration false)
+        printf (set_color yellow)' %s' (format_duration $duration false)
     end
+
+
+    printf ' '
 
     # Error shown by prompt char
     if [ $exit_status != 0 ]
