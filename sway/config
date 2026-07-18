@@ -229,18 +229,18 @@ client.focused_inactive $light-bg-color  $light-bg-color  $inactive-text-color #
 client.urgent           $light-bg-color  $light-bg-color  $urgent-text-color   #0000aa
 
 title_align center
+# hide_edge_borders --i3 none
 default_border none
 
 output * bg /home/fbr/sync/wallpapers/desktop.jpg fill
 
 bar primary {
-	swaybar_command /bin/true
+	swaybar_command waybar
 	mode dock
 	position bottom
 }
 
 # Status Bar:
-exec waybar
 exec dunst
 exec protonvpn-app
 
