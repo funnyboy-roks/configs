@@ -3,6 +3,9 @@ tiny = "b --profile tiny"
 cl = "clippy"
 c = "check --message-format=short"
 
+[profile.dev.package.sqlx-macros]
+opt-level = 3
+
 # Config based on https://github.com/johnthagen/min-sized-rust
 # Very useful for reducing binary size, though it does make some things less great,
 # especially with stripping debug symbols
@@ -14,3 +17,5 @@ lto = true
 
 [build]
 target-dir = "/home/fbr/.cargo-target"
+
+
