@@ -24,6 +24,8 @@ end
 set -x EDITOR nvim
 set -x MANPAGER 'nvim +Man!'
 set -x PAGER 'nvim -R'
+set -x QT_STYLE_OVERRIDE qt5ct-style
+set -x QT_QPA_PLATFORMTHEME qt5ct
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
