@@ -47,9 +47,15 @@
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{icon}  {volume}%",
-        "format-muted": "  {format_source}",
+        "format-muted": "{icon}  MUTE",
         "format-icons": {
-            "default": ["", ""]
+            "alsa_output.pci-0000_00_1f.3.analog-stereo-muted": "",
+            "headphone": "󱡏",
+            "headphone-muted": "󱡐",
+            "hands-free": "󰂑",
+            "headset": "",
+            "headset-muted": "󰋐",
+            "default": ["", "", ""]
         },
         "on-click": "pavucontrol"
     },
