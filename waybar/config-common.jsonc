@@ -55,7 +55,7 @@
             "hands-free": "󰂑",
             "headset": "",
             "headset-muted": "󰋐",
-            "default": ["", "", ""]
+            "default": ["", ""]
         },
         "on-click": "pavucontrol"
     },
