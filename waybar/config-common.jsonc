@@ -22,11 +22,11 @@
     },
     "memory": {
         "interval": 5,
-        "format": "  {}%"
+        "format": "  {}%"
     },
     // https://github.com/funnyboy-roks/github-notif-indicator
     "custom/github": {
-        "exec": "github-notif-indicator $HOME/.github/polybar-secret 10",
+        "exec": "github-notif-indicator $HOME/.github/polybar-secret $HOME/.github/cb-notif-secret 10",
         "format": "{}"
     },
     "custom/temperature": {
